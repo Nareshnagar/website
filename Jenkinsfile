@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker build -t myapp .'
+                bat 'docker build -t myapp .'
                 echo 'Building project...'
             }
         }
@@ -23,6 +23,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
+                bat 'docker run -d -p 8000:8000 myapp'
                 echo 'Deploying app...'
             }
         }
